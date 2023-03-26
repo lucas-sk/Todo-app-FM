@@ -1,7 +1,9 @@
+import { Checkbox } from "./components/CheckBox"
+
 export const App = () => {
   return (
-    <h1>
-      asd
-    </h1>
+    <div className="w-screen min-h-screen bg-gray-900">
+      <Checkbox />
+    </div>
   )
 }
