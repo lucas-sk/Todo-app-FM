@@ -1,20 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         white: {
           900: '#FAFAFA',
           700: '#E4E5F1',
-          500:'#CACDE8'
+          500: '#CACDE8',
         },
         gray: {
           900: '#161722',
-          700: '#25273C'
+          700: '#25273C',
         },
         zinc: {
           500: '#777A92',
@@ -28,7 +25,7 @@ module.exports = {
           */
         },
         blue: {
-          500: '#3A7BFD'
+          500: '#3A7BFD',
         },
         // light:{
         //   VeryLightGray: '#FAFAFA',
@@ -37,24 +34,24 @@ module.exports = {
         //   VeryDarkGrayishBlue: '#484B6A',
         //   VeryDarkGrayishBlueDarkGrayishBlue: '#9394A5',
         // },
-        initial:{
-          500: 'rgb(87,221,255)'
+        initial: {
+          500: 'rgb(87,221,255)',
         },
         end: {
-          500: 'rgb(192,88,243)'
-        }
+          500: 'rgb(192,88,243)',
+        },
       },
       backgroundImage: {
         mobile: {
-          'dark': "url('./src/assets/bg-mobile-dark.jpg')",
-          'light': "url('./src/assets/bg-mobile-light.jpg')"
+          dark: "url('./src/assets/bg-mobile-dark.jpg')",
+          light: "url('./src/assets/bg-mobile-light.jpg')",
         },
         desktop: {
-          'dark': "url('./src/assets/bg-desktop-dark.jpg')",
-          'light': "url('./src/assets/bg-desktop-light.jpg')",
-        }
-      }
+          dark: "url('./src/assets/bg-desktop-dark.jpg')",
+          light: "url('./src/assets/bg-desktop-light.jpg')",
+        },
+      },
     },
   },
   plugins: [],
-}
+};
