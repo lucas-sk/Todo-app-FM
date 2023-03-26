@@ -7,7 +7,7 @@ export const Input = (props: InputProps) => {
   return (
     <label
       htmlFor=''
-      className='flex min-w-[338px] items-center	gap-2 bg-gray-700 px-4 py-[18px]'
+      className='flex items-center gap-2 bg-gray-700 px-4 py-[18px]'
     >
       <Checkbox checked={false} />
       <input
