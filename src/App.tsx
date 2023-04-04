@@ -18,6 +18,7 @@ export const listTodos: todo[] = [
 export const App = () => {
   const [name, setName] = useState('');
   const [todos, setTodos] = useState<todo[]>(listTodos);
+  const [todosNotView, setTodosNotView] = useState<todo[]>(todos);
 
   const handleNameTodo = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
@@ -32,6 +33,7 @@ export const App = () => {
       id: `${todos.length + 1}`
     }
     setTodos([todo, ...todos ]);
+    setTodosNotView([todo, ...todos ]);
     setName("");
     }
   }
@@ -39,25 +41,27 @@ export const App = () => {
   const handleRemoveTodo = (id: string): any => {
     const newList = todos.filter((todo) => todo.id !== id ? todo : null)
     setTodos(newList)
+    setTodosNotView(newList)
   }
 
   const handleCheckboxChange = (id: string) => {
     const newList1 = todos.map((todo) => todo.id === id ? {...todo, check: !todo.check } : todo )
     setTodos(newList1)
+    setTodosNotView(newList1)
   };
 
   const filterTodoActive = () => {
-    const ce = todos.filter((todo) => todo.check !== true ? todo : null)
-    console.log(ce)
+    const ce = todosNotView.filter((todo) => todo.check !== true ? todo : null)
+    setTodos(ce)
   }
 
   const filterTodoAll = () => {
-    console.log(todos)
+    setTodos(todosNotView)
   }
 
   const filterTodoCompleted = () => {
-    const ce = todos.filter((todo) => todo.check !== false ? todo : null)
-    console.log(ce)
+    const ce = todosNotView.filter((todo) => todo.check !== false ? todo : null)
+    setTodos(ce)
   }
 
   const handleCheckedAllTodos = () => {
@@ -65,6 +69,7 @@ export const App = () => {
       return {...todo, check: true}
     })
     setTodos(listCheckedAllTodos)
+    setTodosNotView(listCheckedAllTodos)
   }
 
   return (
