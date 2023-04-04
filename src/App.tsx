@@ -1,4 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { Button } from './components/Button';
 import { Header } from './components/Header';
 import { Input } from './components/Input';
 import { Picture } from './components/Picture';
@@ -15,7 +16,7 @@ export const listTodos: todo[] = [
 ];
 
 export const App = () => {
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
   const [todos, setTodos] = useState<todo[]>(listTodos);
 
   const handleNameTodo = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,18 +31,34 @@ export const App = () => {
       check: false,
       id: `${todos.length + 1}`
     }
-    setTodos([...todos, todo]);
+    setTodos([todo, ...todos ]);
     setName("");
     }
   }
-
 
   const handleRemoveTodo = (id: string): any => {
     const newList = todos.filter((todo) => todo.id !== id ? todo : null)
     setTodos(newList)
   }
 
+  const handleCheckboxChange = (id: string) => {
+    const newList1 = todos.map((todo) => todo.id === id ? {...todo, check: !todo.check } : todo )
+    setTodos(newList1)
+  };
 
+  const filterTodoActive = () => {
+    const ce = todos.filter((todo) => todo.check !== true ? todo : null)
+    console.log(ce)
+  }
+
+  const filterTodoAll = () => {
+    console.log(todos)
+  }
+
+  const filterTodoCompleted = () => {
+    const ce = todos.filter((todo) => todo.check !== false ? todo : null)
+    console.log(ce)
+  }
 
   return (
     <div className='min-h-screen flex flex-col items-center max-w-full	w-screen bg-gray-900'>
@@ -55,7 +72,7 @@ export const App = () => {
             {todos.length > 0 && todos.map((todo) => {
               return (
                 <>
-                  <Todo key={todo.id} check={todo.check} name={todo.name} onClick={() => handleRemoveTodo(todo.id)}/>
+                  <Todo key={todo.id} check={todo.check} name={todo.name} onClick={() => handleRemoveTodo(todo.id)} onChecked={() => handleCheckboxChange(todo.id)}/>
                 </>
                 )
               })}
@@ -66,9 +83,9 @@ export const App = () => {
           </>
           </div>
               <div className='flex px-4 py-[18px] gap-4 justify-center bg-gray-700 w-full text-zinc-500'>
-                <p>All</p>
-                <p>Active</p>
-                <p>Completed</p>
+                <Button onClick={() => filterTodoAll()}>All</Button>
+                <Button onClick={() => filterTodoActive()} >Active</Button>
+                <Button onClick={() => filterTodoCompleted()}>Completed</Button>
               </div>
         </div>
         <p className='text-center text-zinc-700'>
