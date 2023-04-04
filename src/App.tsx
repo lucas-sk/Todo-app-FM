@@ -23,7 +23,7 @@ export const App = () => {
     setName(e.target.value)
   }
 
-   function handleAddTodo(event: KeyboardEvent<HTMLInputElement>) {
+   const handleAddTodo = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       console.log('Enter pressionado!');
       const todo: todo =  {
@@ -60,6 +60,13 @@ export const App = () => {
     console.log(ce)
   }
 
+  const handleCheckedAllTodos = () => {
+    const listCheckedAllTodos = todos.map((todo) => {
+      return {...todo, check: true}
+    })
+    setTodos(listCheckedAllTodos)
+  }
+
   return (
     <div className='min-h-screen flex flex-col items-center max-w-full	w-screen bg-gray-900'>
       <Picture />
@@ -78,7 +85,7 @@ export const App = () => {
               })}
               <div className='flex px-4 py-[18px] justify-between bg-gray-700 w-full text-zinc-500'>
                 <p>{todos.length} Items left</p>
-                <p>Clear Completed</p>
+                <Button onClick={() => handleCheckedAllTodos()}>Clear Completed</Button>
               </div>
           </>
           </div>
