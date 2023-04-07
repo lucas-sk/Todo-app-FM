@@ -1,4 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Button } from './components/Button';
 import { Header } from './components/Header';
 import { Input } from './components/Input';
@@ -7,12 +8,12 @@ import { Todo } from './components/Todo';
 import { todo } from './interface/todo';
 
 export const listTodos: todo[] = [
-  { id: '1', name: 'todo', check: true },
-  { id: '2', name: 'todo', check: false },
-  { id: '3', name: 'todo', check: false },
-  { id: '4', name: 'todo', check: false },
-  { id: '5', name: 'todo', check: false },
-  { id: '6', name: 'todo', check: false },
+  { id: uuidv4(), name: 'todo', check: true },
+  { id: uuidv4(), name: 'todo', check: false },
+  { id: uuidv4(), name: 'todo', check: false },
+  { id: uuidv4(), name: 'todo', check: false },
+  { id: uuidv4(), name: 'todo', check: false },
+  { id: uuidv4(), name: 'todo', check: false },
 ];
 
 export const App = () => {
@@ -30,7 +31,7 @@ export const App = () => {
       const todo: todo =  {
       name: name,
       check: false,
-      id: `${todos.length + 1}`
+      id: uuidv4()
     }
     setTodos([todo, ...todos ]);
     setTodosNotView([todo, ...todos ]);
